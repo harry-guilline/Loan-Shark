@@ -8,11 +8,11 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/loan-shark.png">
 
-    <!-- Google Fonts -->
+    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    
+
     <style>
-        /* Reset */
+        /* Reset defaults */
         * {
             margin: 0;
             padding: 0;
@@ -32,26 +32,29 @@
             padding: 20px;
         }
 
-        h1 {
-            font-size: 3rem;
-            color: #fff;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        header {
             margin-bottom: 20px;
         }
 
-        p {
-            font-size: 1.2rem;
-            color: #fdfdfd;
-            max-width: 600px;
-            margin-bottom: 30px;
-            line-height: 1.6;
+        img.logo {
+            max-width: 250px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
-        img.logo {
-            max-width: 300px;
-            border-radius: 20px; /* Slightly rounded corners */
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            margin-bottom: 30px;
+        h1 {
+            font-size: 2.8rem;
+            color: #fff;
+            margin-top: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #fdfdfd;
+            max-width: 600px;
+            margin: 20px auto;
+            line-height: 1.6;
         }
 
         a.button {
@@ -59,37 +62,43 @@
             text-decoration: none;
             background-color: #ff6f61;
             color: #fff;
-            padding: 12px 24px;
+            padding: 14px 30px;
             border-radius: 8px;
             font-weight: bold;
-            transition: background 0.3s;
+            transition: background 0.3s, transform 0.2s;
+            margin-top: 10px;
         }
 
         a.button:hover {
             background-color: #ff3b2e;
+            transform: scale(1.05);
         }
 
         footer {
-            margin-top: 40px;
+            position: absolute;
+            bottom: 10px;
             color: #fff;
             font-size: 0.9rem;
         }
     </style>
 </head>
+
 <body>
-    <!-- Logo -->
-    <img src="images/loan-shark.png" alt="Loan Shark Logo" class="logo">
+    <header>
+        <img src="images/loan-shark.png" alt="Loan Shark Logo" class="logo">
+        <h1>Welcome to Loan Shark</h1>
+    </header>
 
-    <!-- Heading -->
-    <h1>Welcome to Loan Shark</h1>
+    <main>
+        <p>
+            Your simple and efficient way to track borrowed devices, manage loans, and keep your tech assets organised.  
+            Use the test button below to experiment with functionality.
+        </p>
 
-    <!-- Paragraph -->
-    <p>Keep track of who has borrowed computers and devices within your school environment. Simple, organized, and easy to use.</p>
+        <!-- Original test button -->
+        <a class="button" href="#">Test Button</a>
+    </main>
 
-    <!-- Example Button -->
-    <a class="button" href="about.html">Get Started</a>
-
-    <!-- Footer -->
     <footer>
         &copy; 2025 Loan Shark
     </footer>
