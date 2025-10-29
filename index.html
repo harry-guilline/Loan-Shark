@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-        /* Reset defaults */
+        /* Reset */
         * {
             margin: 0;
             padding: 0;
@@ -26,34 +26,56 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+        }
+
+        /* Header styles */
+        header {
+            width: 100%;
+            background-color: #6b8991; /* slightly darker for header contrast */
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        header img.logo {
+            max-width: 80px;
+            border-radius: 15px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        header .header-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            color: #fff;
+        }
+
+        header h2 {
+            font-size: 1rem;
+            color: #f0f0f0;
+            font-weight: 400;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
-        header {
-            margin-bottom: 20px;
-        }
-
-        img.logo {
-            max-width: 250px;
-            border-radius: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-
-        h1 {
-            font-size: 2.8rem;
-            color: #fff;
-            margin-top: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        p {
+        main p {
             font-size: 1.1rem;
             color: #fdfdfd;
             max-width: 600px;
-            margin: 20px auto;
+            margin-bottom: 30px;
             line-height: 1.6;
         }
 
@@ -66,7 +88,6 @@
             border-radius: 8px;
             font-weight: bold;
             transition: background 0.3s, transform 0.2s;
-            margin-top: 10px;
         }
 
         a.button:hover {
@@ -75,10 +96,28 @@
         }
 
         footer {
-            position: absolute;
-            bottom: 10px;
+            text-align: center;
+            padding: 10px;
             color: #fff;
             font-size: 0.9rem;
+            background-color: #6b8991;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            header .header-text h1 {
+                font-size: 1.4rem;
+            }
+
+            header .header-text h2 {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -86,16 +125,16 @@
 <body>
     <header>
         <img src="images/loan-shark.png" alt="Loan Shark Logo" class="logo">
-        <h1>Welcome to Loan Shark</h1>
+        <div class="header-text">
+            <h1>Loan Shark</h1>
+            <h2>Track borrowed devices efficiently</h2>
+        </div>
     </header>
 
     <main>
         <p>
-            Your simple and efficient way to track borrowed devices, manage loans, and keep your tech assets organised.  
-            Use the test button below to experiment with functionality.
+            Your simple and efficient way to track borrowed devices, manage loans, and keep your tech assets organised.
         </p>
-
-        <!-- Original test button -->
         <a class="button" href="#">Test Button</a>
     </main>
 
