@@ -123,6 +123,7 @@
             width: 90%;
             border-radius: 8px;
             pointer-events: auto;
+            z-index: 1000;
         }
 
         .modal video {
@@ -130,6 +131,8 @@
             display: block;
             border-radius: 8px;
             pointer-events: auto;
+            position: relative;
+            z-index: 1; /* Ensure video is behind close button */
         }
 
         .close-modal {
@@ -145,7 +148,7 @@
             width: 35px;
             height: 35px;
             cursor: pointer;
-            z-index: 10;
+            z-index: 1001; /* Ensure button is above video */
         }
 
         /* Responsive adjustments */
