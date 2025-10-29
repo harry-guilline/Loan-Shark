@@ -122,12 +122,14 @@
             max-width: 800px;
             width: 90%;
             border-radius: 8px;
+            pointer-events: auto;
         }
 
         .modal video {
             width: 100%;
             display: block;
             border-radius: 8px;
+            pointer-events: auto;
         }
 
         .close-modal {
@@ -143,6 +145,7 @@
             width: 35px;
             height: 35px;
             cursor: pointer;
+            z-index: 10;
         }
 
         /* Responsive adjustments */
@@ -190,10 +193,12 @@
     const closeVideo = document.getElementById('closeVideo');
     const videoModal = document.getElementById('videoModal');
 
+    // Open modal
     openVideo.addEventListener('click', () => {
         videoModal.style.display = 'flex';
     });
 
+    // Close modal via X button
     closeVideo.addEventListener('click', () => {
         videoModal.style.display = 'none';
         const video = videoModal.querySelector('video');
