@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loan Shark</title>
-    
+
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/assets/images/loan-shark.png">
+    <link rel="icon" type="image/png" href="assets/images/loan-shark.png">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
@@ -20,7 +20,11 @@
 
         body {
             font-family: Arial, sans-serif;
-            background-color: #d8e5ea;
+            background-color: #d8e5ea; /* fallback color */
+            background-image: url('assets/images/background.jpg'); /* optional background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -32,14 +36,24 @@
             padding: 20px;
         }
 
+        /* White borders between header/main and main/footer */
         header {
             display: flex;
+            justify-content: center;
             align-items: center;
+            text-align: center;
+            border-bottom: 3px solid white;
+        }
+
+        footer {
+            text-align: center;
+            border-top: 3px solid white;
         }
 
         .title-container {
             display: flex;
             flex-direction: column;
+            align-items: center;
         }
 
         .title, .subtitle {
@@ -60,15 +74,84 @@
 
         main {
             flex: 1;
-            padding: 40px;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
+            padding: 40px 20px;
         }
 
-        footer {
-            text-align: center;
+        .card {
+            background-color: rgba(255, 255, 255, 0.95); /* semi-transparent for background image */
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h1 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.8em;
+            color: #4886b2;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 1em;
+            color: #333333;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .card button {
+            background-color: #4886b2;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1em;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .card button:hover {
+            background-color: #356494;
+        }
+
+        /* Footer attribution */
+        footer .attribution {
+            font-size: 0.75em; /* smaller text */
+            opacity: 0.7;      /* subtle */
+            margin-top: 5px;
+        }
+
+        footer .attribution a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        footer .attribution a:hover {
+            color: #d8e5ea;
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 30px 20px;
+            }
+
+            .card h1 {
+                font-size: 1.5em;
+            }
+
+            .card p {
+                font-size: 0.95em;
+            }
         }
     </style>
 </head>
@@ -82,35 +165,69 @@
     </header>
 
     <main>
-        <p>Welcome! This is a placeholder for the future Loan Shark project.</p>
+        <div class="card">
+            <h1>Welcome to Loan Shark</h1>
+            <p>This is a placeholder for the future Loan Shark project. Track, cache, and manage devices efficiently and securely.</p>
+            <button>Coming Soon</button>
+        </div>
     </main>
 
     <footer>
         &copy; 2025 Loan Shark. All rights reserved.
+        <div class="attribution">
+            Background image by <a href="https://unsplash.com/@j_cobnasyr1" target="_blank" rel="noopener noreferrer">j_cobnasyr1</a> on Unsplash
+        </div>
     </footer>
 
     <script>
-        function tiltText(id, minRot=-10, maxRot=10, minY=-5, maxY=5, minScale=0.95, maxScale=1.05) {
+        // Consistent cartoon-ish tilt effect
+        const titleEffects = [
+            {rotate: -8, y: -3, scale: 1},
+            {rotate: 5, y: 2, scale: 1},
+            {rotate: -3, y: -1, scale: 0.98},
+            {rotate: 4, y: 1, scale: 1.02},
+            {rotate: -6, y: 0, scale: 1},
+            {rotate: 7, y: -2, scale: 1},
+            {rotate: -5, y: 3, scale: 1},
+            {rotate: 6, y: -1, scale: 0.97},
+            {rotate: -4, y: 2, scale: 1.01},
+            {rotate: 3, y: -2, scale: 1},
+        ];
+
+        const subtitleEffects = [
+            {rotate: 3, y: 0, scale: 1}, {rotate: -2, y: 1, scale: 1},
+            {rotate: 1, y: -1, scale: 1}, {rotate: -3, y: 0, scale: 0.98},
+            {rotate: 2, y: 1, scale: 1}, {rotate: 0, y: -1, scale: 1},
+            {rotate: -1, y: 0, scale: 1}, {rotate: 2, y: 1, scale: 1.01},
+            {rotate: -2, y: -1, scale: 0.99}, {rotate: 1, y: 0, scale: 1},
+            {rotate: -1, y: 1, scale: 1}, {rotate: 0, y: -1, scale: 1},
+            {rotate: 2, y: 0, scale: 1}, {rotate: -2, y: 1, scale: 1},
+            {rotate: 1, y: 0, scale: 0.99}, {rotate: -1, y: -1, scale: 1},
+            {rotate: 0, y: 0, scale: 1}, {rotate: 1, y: 1, scale: 1.01},
+            {rotate: -1, y: -1, scale: 1}, {rotate: 0, y: 0, scale: 1},
+            {rotate: 1, y: 0, scale: 1}, {rotate: -1, y: 1, scale: 1}
+        ];
+
+        function applyEffects(id, effects) {
             const container = document.getElementById(id);
             const text = container.textContent;
             container.innerHTML = '';
 
-            for (let char of text) {
+            for (let i = 0; i < text.length; i++) {
+                const char = text[i];
                 const span = document.createElement('span');
                 span.textContent = char;
                 if (char !== ' ') {
-                    const rotation = Math.random() * (maxRot - minRot) + minRot;
-                    const translateY = Math.random() * (maxY - minY) + minY;
-                    const scale = Math.random() * (maxScale - minScale) + minScale;
+                    const effect = effects[i % effects.length];
                     span.style.display = 'inline-block';
-                    span.style.transform = `rotate(${rotation}deg) translateY(${translateY}px) scale(${scale})`;
+                    span.style.transform = `rotate(${effect.rotate}deg) translateY(${effect.y}px) scale(${effect.scale})`;
                 }
                 container.appendChild(span);
             }
         }
 
-        tiltText('title-text');     // Apply playful tilt to title
-        tiltText('subtitle-text');  // Apply playful tilt to subtitle
+        applyEffects('title-text', titleEffects);
+        applyEffects('subtitle-text', subtitleEffects);
     </script>
 
 </body>
