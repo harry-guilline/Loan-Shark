@@ -4,258 +4,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loan Shark</title>
-
+    
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/images/loan-shark.png">
+    <link rel="icon" type="image/png" href="/assets/images/loan-shark.png">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
 
     <style>
-        /* Reset */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #9cb2bf;
-            color: #333;
+            font-family: Arial, sans-serif;
+            background-color: #d8e5ea;
+            display: flex;
+            flex-direction: column;
             min-height: 100vh;
+        }
+
+        header, footer {
+            background-color: #4886b2;
+            color: white;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+        }
+
+        .title-container {
             display: flex;
             flex-direction: column;
         }
 
-        header {
-            width: 100%;
-            background-color: #e1ebee;
-            padding: 20px 40px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        }
-
-        header img.logo {
-            max-width: 90px; /* larger logo */
-            border-radius: 15px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        }
-
-        header .header-text { 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; /* vertically center text */
-        }
-
-        /* Header title with slight tilt for each letter */
-        header h1 {
+        .title, .subtitle {
             font-family: 'Fredoka One', cursive;
-            font-size: 2.5rem;
-            color: #333; /* same color as subtitle */
+            display: inline-block;
+        }
+
+        .title {
+            font-size: 2.2em;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.1em;
             letter-spacing: 1px;
-            text-shadow: 
-                1px 1px 0 #fff, 
-               -1px 1px 0 #fff, 
-                1px -1px 0 #fff, 
-               -1px -1px 0 #fff; /* subtle white outline */
-            margin-bottom: 5px;
-            display: inline-block;
-        }
-
-        header h1 span {
-            display: inline-block;
-            transform: rotate(0deg);
-            transition: transform 0.3s;
-        }
-
-        header h1 span:nth-child(1) { transform: rotate(-3deg); }
-        header h1 span:nth-child(2) { transform: rotate(2deg); }
-        header h1 span:nth-child(3) { transform: rotate(-1deg); }
-        header h1 span:nth-child(4) { transform: rotate(3deg); }
-        header h1 span:nth-child(5) { transform: rotate(-2deg); }
-        header h1 span:nth-child(6) { transform: rotate(1deg); }
-        header h1 span:nth-child(7) { transform: rotate(-1deg); }
-        header h1 span:nth-child(8) { transform: rotate(2deg); }
-        header h1 span:nth-child(9) { transform: rotate(-2deg); }
-        header h1 span:nth-child(10){ transform: rotate(1deg); }
-
-        header h2 {
-            font-family: 'Fredoka One', cursive;
-            font-size: 0.9rem; /* slightly smaller subtitle */
-            color: #333; /* same as title */
-            letter-spacing: 0.5px;
-            line-height: 1.2;
-            text-shadow: 
-                1px 1px 0 #fff, 
-               -1px 1px 0 #fff, 
-                1px -1px 0 #fff, 
-               -1px -1px 0 #fff; /* subtle white outline */
+            opacity: 0.9;
         }
 
         main {
             flex: 1;
+            padding: 40px;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             text-align: center;
-            padding: 40px 20px;
-        }
-
-        main p {
-            font-size: 1.1rem;
-            color: #fdfdfd;
-            max-width: 600px;
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-
-        a.button {
-            display: inline-block;
-            text-decoration: none;
-            background-color: #ff6f61;
-            color: #fff;
-            padding: 14px 30px;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: background 0.3s, transform 0.2s;
-            cursor: pointer;
-        }
-
-        a.button:hover {
-            background-color: #ff3b2e;
-            transform: scale(1.05);
         }
 
         footer {
             text-align: center;
-            padding: 10px;
-            color: #333;
-            font-size: 0.9rem;
-            background-color: #e1ebee;
-        }
-
-        /* Modal styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            position: relative;
-            background: #fff;
-            padding: 0;
-            max-width: 800px;
-            width: 90%;
-            border-radius: 8px;
-            pointer-events: auto;
-            z-index: 1000;
-        }
-
-        .modal video {
-            width: 100%;
-            display: block;
-            border-radius: 8px;
-            pointer-events: auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 28px;
-            font-weight: bold;
-            color: #fff;
-            background: rgba(0,0,0,0.5);
-            border: none;
-            border-radius: 50%;
-            width: 35px;
-            height: 35px;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 600px) {
-            header { flex-direction: column; align-items: flex-start; gap: 10px; }
-            header h1 { font-size: 1.8rem; }
-            header h2 { font-size: 0.8rem; }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <img src="assets/images/loan-shark.png" alt="Loan Shark Logo" class="logo">
-    <div class="header-text">
-        <h1 id="title">
-            <span>L</span><span>o</span><span>a</span><span>n</span>
-            <span> </span>
-            <span>S</span><span>h</span><span>a</span><span>r</span><span>k</span>
-        </h1>
-        <h2>Cache it, track it, bring it back.</h2>
-    </div>
-</header>
+    <header>
+        <div class="title-container">
+            <div class="title" id="title-text">Loan Shark</div>
+            <div class="subtitle" id="subtitle-text">Cache it, track it, bring it back.</div>
+        </div>
+    </header>
 
-<main>
-    <p>
-        Your simple and efficient way to track borrowed devices, manage loans, and keep your tech assets organised.
-    </p>
-    <a class="button" id="openVideo">Test Button</a>
-</main>
+    <main>
+        <p>Welcome! This is a placeholder for the future Loan Shark project.</p>
+    </main>
 
-<footer>
-    &copy; 2025 Loan Shark
-</footer>
+    <footer>
+        &copy; 2025 Loan Shark. All rights reserved.
+    </footer>
 
-<!-- Video Modal -->
-<div class="modal" id="videoModal">
-    <div class="modal-content">
-        <button class="close-modal" id="closeVideo">&times;</button>
-        <video controls>
-            <source src="assets/videos/2887463-hd_1920_1080_25fps.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
-</div>
+    <script>
+        function tiltText(id, minRot=-10, maxRot=10, minY=-5, maxY=5, minScale=0.95, maxScale=1.05) {
+            const container = document.getElementById(id);
+            const text = container.textContent;
+            container.innerHTML = '';
 
-<script>
-    const openVideo = document.getElementById('openVideo');
-    const closeVideo = document.getElementById('closeVideo');
-    const videoModal = document.getElementById('videoModal');
-
-    // Open modal
-    openVideo.addEventListener('click', () => {
-        videoModal.style.display = 'flex';
-    });
-
-    // Close modal via X button
-    closeVideo.addEventListener('click', () => {
-        videoModal.style.display = 'none';
-        const video = videoModal.querySelector('video');
-        video.pause();
-        video.currentTime = 0;
-    });
-
-    // Close modal if clicking outside the video
-    videoModal.addEventListener('click', (e) => {
-        if (e.target === videoModal) {
-            videoModal.style.display = 'none';
-            const video = videoModal.querySelector('video');
-            video.pause();
-            video.currentTime = 0;
+            for (let char of text) {
+                const span = document.createElement('span');
+                span.textContent = char;
+                if (char !== ' ') {
+                    const rotation = Math.random() * (maxRot - minRot) + minRot;
+                    const translateY = Math.random() * (maxY - minY) + minY;
+                    const scale = Math.random() * (maxScale - minScale) + minScale;
+                    span.style.display = 'inline-block';
+                    span.style.transform = `rotate(${rotation}deg) translateY(${translateY}px) scale(${scale})`;
+                }
+                container.appendChild(span);
+            }
         }
-    });
-</script>
+
+        tiltText('title-text');     // Apply playful tilt to title
+        tiltText('subtitle-text');  // Apply playful tilt to subtitle
+    </script>
 
 </body>
 </html>
